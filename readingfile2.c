@@ -48,3 +48,23 @@ void read2darray(char *fname, int (*array)[COL], int rows)
   }
   free(buf);
 }
+#define ROWS 4
+int main()
+{
+  int arr[ROWS][COL] = {0};
+  char *fname = "c.csv";
+ 
+  // read file into 2D into array
+  read2darray(fname, (int(*)[COL])arr, ROWS);
+  printf("\n2D array:\n");
+ 
+  // print 2d array
+  for(int i=0;i<ROWS;i++)
+  {
+    for(int j=0;j<COL;j++)
+    {
+      printf("%d ", arr[i][j]);
+    }
+    printf("\n");
+  }
+}
