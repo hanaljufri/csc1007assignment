@@ -2,12 +2,13 @@
 #include<string.h>
 #include<stdlib.h>
 
-#define TB 100
-void allocate();
-void deallocate();
-void display();
+#define TB 10000
+
+void add();
+void delete();
+void read();
 int BFull();
-struct Sequence
+struct Data
 {
     char n[30];
     int len;
@@ -20,22 +21,22 @@ int main()
     
      printf("\n Contiguous File Allocation \n\n");
      do{
-     printf("\n\n1.Allocate\n2.Deallocate\n3.Display\n4.Exit");
+     printf("\n\n1.Add\n2.Delete\n3.Read\n4.Exit");
      printf("\n\nEnter Your choice : ");
      scanf("%d",&ch);
      switch(ch)
      {
                 case 1:
                     pos++;
-                    allocate();
+                    add();
                     break;
 
                 case 2:
-                    deallocate();
+                    delete();
                     break;
 
                 case 3:
-                    display();
+                    read();
                     break;
 
                 case 4:
@@ -47,10 +48,11 @@ int main()
      }while(ch!=4);
 
 }
-void allocate()
+void add()
 {
    printf("\nEnter File Name : ");
    scanf("%s",&(F[pos].n));
+   int a =  atoi(F[pos].n);
    printf("\nEnter File Length : ");
    scanf("%d",&(F[pos].len));
    if(BFull())
@@ -62,7 +64,7 @@ void allocate()
    while(1)
    {
         i=0;
-        r=(rand()%TB+1);
+        r=(a);
         if(r+F[pos].len-1>TB)
            continue;
         if(Table[r]==0)
@@ -88,7 +90,7 @@ void allocate()
     }
 
 }
-void deallocate()
+void delete()
 {
    printf("\nEnter The File Name : ");
    scanf("%s",&fn);
@@ -115,7 +117,7 @@ void deallocate()
         printf("\n");
     }
 }
-void display()
+void read()
 {
     printf("\nEnter The File Name : ");
     scanf("%s",fn);
