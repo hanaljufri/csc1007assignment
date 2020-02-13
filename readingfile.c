@@ -44,7 +44,6 @@ void main()
 int readFile(){
 
    char file_name[25];
-   char buf[10000];
    int i = 0;
    struct data d[10];//basically able to read 10 lines so got 10 different set of data
 
@@ -59,12 +58,14 @@ int readFile(){
       exit(EXIT_FAILURE);
    }
 
-   while(fscanf(fp,"%s %d %d",d[i].func,&d[i].filename,&d[i].data)!=EOF){
+   while(fscanf(fp,"%s %d%*c %d%*c",d[i].func,&d[i].filename,&d[i].data)!=EOF){
+      printf("%s %d %d\n",d[i].func,d[i].filename,d[i].data);
       i++;
+      
    }
-   for(int a = 0;a<i;a++){
-      printf("%s %d %d\n",d[a].func,d[a].filename,d[a].data);
-   }
+   
+      
+
    fclose(fp);
 
    return 0;
