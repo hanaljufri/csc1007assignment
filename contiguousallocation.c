@@ -17,6 +17,7 @@ int Table[TB],pos=0,r,i,j,ch,B=0;
 char fn[30];
 int main()
 {
+    
      printf("\n Contiguous File Allocation \n\n");
      do{
      printf("\n\n1.Allocate\n2.Deallocate\n3.Display\n4.Exit");
