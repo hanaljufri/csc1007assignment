@@ -8,6 +8,7 @@ void add();
 void delete();
 void read();
 int BFull();
+
 struct Data
 {
     char n[30];
@@ -50,11 +51,13 @@ int main()
 }
 void add()
 {
-   printf("\nEnter File Name : ");
-   scanf("%s",&(F[pos].n));
-   int a =  atoi(F[pos].n);
-   printf("\nEnter File Length : ");
-   scanf("%d",&(F[pos].len));
+   //printf("\nEnter File Name : ");
+   //scanf("%s",&(F[pos].n));
+   
+   int a =  100;
+   //printf("\nEnter File Length : ");
+   //scanf("%d",&(F[pos].len));
+   F[pos].len = 6;
    if(BFull())
    {
         pos--;
@@ -85,7 +88,7 @@ void add()
     printf("\nFileName\tStart\tLength\n");
     for(i=1;i<=pos;i++)
     {
-        printf("\n%s\t\t%d\t%d",F[i].n,F[i].st,F[i].len);
+        printf("\n100\t\t%d\t%d",F[i].st,F[i].len);
         printf("\n");
     }
 
