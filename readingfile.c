@@ -7,17 +7,14 @@ FILE *fp;
 struct data{
       char func[6];//to read add, read, delete based on first letter
       int filename;
-      int data;
+      int data[];
 };
 
-int readFile(void);
+int readFile();
 void main()
 {
-   
 /////////////////////////////////////////////////////////////////
-   
    readFile();/*
-
    int listLength = 1;
    while((num = fgetc(fp))!= EOF){
       if(num =='\n'){
@@ -34,18 +31,15 @@ void main()
       i++;
    }
    printf("%c %d %d \n",(dt)->func,(dt)->filename,(dt)->data);*/
-
-   
-
-
-
-   
 }
+
 int readFile(){
 
    char file_name[25];
    int i = 0;
    struct data d[10];//basically able to read 10 lines so got 10 different set of data
+   char *token;
+   char buff[1024];
 
    printf("Enter name of a file you wish to see\n");
    gets(file_name);
@@ -57,16 +51,18 @@ int readFile(){
       perror("Error while opening the file.\n");//if file does not exist
       exit(EXIT_FAILURE);
    }
-
-   while(fscanf(fp,"%s %d%*c %d%*c",d[i].func,&d[i].filename,&d[i].data)!=EOF){
-      printf("%s %d %d\n",d[i].func,d[i].filename,d[i].data);
+   while(fgets(buff,1024,fp)!= NULL){
+      token = strtok(buff,",");
+      d[i].func == token;
       i++;
-      
    }
-   
-      
+   for(int c= 0; c < i;c++){
+      printf("%s %d",d[c].func);
+   }
 
+   
    fclose(fp);
 
    return 0;
+
 }
