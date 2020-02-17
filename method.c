@@ -6,21 +6,19 @@ void getResult(FILE *filed);
 
 struct fileStructure
 {
-    char fileName;
-    char actions;
-    char dataContain[];
+    //  char *fileName;
+    char *actions;
+    int dataContain[100];
 };
 
 int main()
 {
-    struct fileStructure inf[20];
+    //struct fileStructure info[20];
     char rfileName[100];
-    
+
     printf("\nEnter file name: ");
     scanf("%s", &rfileName);
-    //printf("test %s" , &fileName);
     FILE *fileOpen = fopen(rfileName, "r");
-    // printf("\nhere");
     if (!fileOpen)
     {
         printf("\n\nUnable to find the file");
@@ -32,7 +30,6 @@ int main()
 
     printf("/noutside");
     fclose(fileOpen);
-    printf("%s", inf[0].actions);
 }
 
 void getResult(FILE *filed)
@@ -45,29 +42,33 @@ void getResult(FILE *filed)
     {
 
         token = strtok(temp, ",");
-        strcpy(info[count].actions, token); // for first instruction
-        printf(token);
-        token = strtok(NULL, ",");
+        int dataNo = 0;
+        int run = 0;
 
-        if (&info[count].actions == "read")
+        while (token != NULL)
         {
-            strcpy(&info[count].dataContain[0], token);
-        }
-        else
-        {
-            strcpy(&info[count].fileName, token);
-
-            int dataNo = 0;
-            token = strtok(NULL, ",");
-            while (token != NULL)
+            if (run == 0)
             {
-                strcpy(&info[count].dataContain[dataNo], token);
+                info[count].actions = token;
+
+                run = 1;
                 token = strtok(NULL, ",");
-                //  strcpy(&info[count].dataContain[dataNo], token);
+            }
+            else
+            {
+                int val = atoi(token);
+                info[count].dataContain[dataNo] = val;
+                token = strtok(NULL, ",");
                 dataNo++;
             }
         }
         count++;
     }
-    printf("%s" , info[count].actions);
+
+    int elementNo = sizeof(info);
+    for (int i = 0; i < 4; i++)
+    {
+        printf("data is %d\n", info[i].dataContain[1]);
+        printf("action is %s\n", info[i].actions);
+    }
 }
