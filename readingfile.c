@@ -7,7 +7,7 @@ FILE *fp;
 struct data{
       char func[6];//to read add, read, delete based on first letter
       int filename;
-      int data[];
+      int data[10];
 };
 
 int readFile();
@@ -40,6 +40,7 @@ int readFile(){
    struct data d[10];//basically able to read 10 lines so got 10 different set of data
    char *token;
    char buff[1024];
+   
 
    printf("Enter name of a file you wish to see\n");
    gets(file_name);
@@ -51,17 +52,33 @@ int readFile(){
       perror("Error while opening the file.\n");//if file does not exist
       exit(EXIT_FAILURE);
    }
-   while(fgets(buff,1024,fp)!= NULL){
+   while(fgets(buff,1024,fp)){
+      int j = 0;
       token = strtok(buff,",");
-      d[i].func == token;
+      strcpy(d[i].func,token);
       token = strtok(NULL,",");
       d[i].filename = atoi(token);
+      token = strtok(NULL,",");
+      while(token != NULL){   
+         d[i].data[j]= atoi(token);
+         token = strtok(NULL,",");
+         j++;
+      }
       i++;
-   }
+   } 
    for(int c= 0; c < i;c++){
-      printf("%s %d",d[c].func,d[c].filename);
-   }
+      printf("%s %d\n",d[c].func,d[c].filename);
+      /*int size = 0;
+      int *ptr = d[c].data;
 
+      while (*ptr !=0) {
+         size++;
+         *ptr++;
+      }*/
+      for(int k = 0; k < 2; k++){//2 instead of size idk le la i fked up
+         printf("--%d--",d[c].data[k]);
+      }
+   }
    
    fclose(fp);
 
