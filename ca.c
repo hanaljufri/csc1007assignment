@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FILESIZE 100
+#define FILESIZE 130
 FILE *fp;
 typedef struct{
       char func[6];//to read add, read, delete based on first letter
@@ -10,11 +10,12 @@ typedef struct{
       int data[FILESIZE];
 }data;
 data d[10];//basically able to read 10 lines so got 10 different set of data
-int i = 0;
+int i = 0,pos = 0, B = 0;
 int readFile();
 void add();
 void read();
 void delete();
+int bFull();
 
 int readFile(){
 
@@ -45,6 +46,7 @@ int readFile(){
          token = strtok(NULL,",");
          j++;
       }
+      
       i++;
    } 
    for(int c= 0; c < i;c++){
@@ -73,11 +75,12 @@ void main()
       switch(*function){
          case 'a':
             printf("\naddpart1\n");
+            //printf("%d",(int)sizeof(d[c].data));
             add(c);
             break;
          case 'r':
             printf("\nreadpart1\n");
-            read();
+            read(c);
             break;
          case 'd':
             printf("\ndeletepart1\n");
@@ -93,12 +96,33 @@ void main()
 
 void add(int index){
    printf("%d",d[index].filename);
+   /*if(bFull()){
+      pos--;
+      printf("\n\nNot Enough Free Space Available \n");
+      return;
+   }*/
    //d[1].filename
    printf("--went into add function--");
+
 }
-void read(){
+void read(int index){
+   printf("Filename: %d\n",d[index].filename);
+   printf("Data inside: ");
+   for(int k = 0; k < 2; k++){//weird but i lost le
+         printf("%d,",d[index].data[k]);
+   }
    printf("--went into read function--");
 }
 void delete(){
    printf("--went into delete function--");
+}
+int bFull(){
+   for(i = 1,B = 0;i<=pos;i++){
+      B = B + sizeof(d[i].data);
+   }
+   if(B>FILESIZE){
+      return 1;
+   }else{
+      return 0;
+   }
 }
