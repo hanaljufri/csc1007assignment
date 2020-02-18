@@ -3,29 +3,33 @@
 #include<stdlib.h>
 
 #define TB 10000
+#define FILESIZE 100
 
 void add();
 void delete();
 void read();
 int BFull();
 int readFile();
+
 FILE *fp;
-struct data{
+typedef struct{
       char func[6];//to read add, read, delete based on first letter
       int filename;
-      int data[];
-};
+      int data[FILESIZE];
+}data;
+
 struct Sequence
 {
     char n[30];
     int len;
     int st;
 }F[30];
+
 int readFile(){
 
    char file_name[25];
    int i = 0;
-   struct data d[10];//basically able to read 10 lines so got 10 different set of data
+   data d[10];//basically able to read 10 lines so got 10 different set of data
    char *token;
    char buff[1024];
 
@@ -39,21 +43,34 @@ int readFile(){
       perror("Error while opening the file.\n");//if file does not exist
       exit(EXIT_FAILURE);
    }
-   while(fgets(buff,1024,fp)!= NULL){
-       int j = 0;
+   while(fgets(buff,sizeof(buff),fp)){
+      int j = 0;
       token = strtok(buff,",");
       strcpy(d[i].func,token);
-      token = strtok(buff,",");
-      d[i].filename == atoi(token);
-      token = strtok(buff,",");
-      while(token!=NULL){
-        d[i].data[j] == atoi(token);
-        token = strtok(buff,",");
-        j++;
+      token = strtok(NULL,",");
+      d[i].filename = atoi(token);
+      token = strtok(NULL,",");
+      while(token != NULL){   
+         d[i].data[j]= atoi(token);
+         printf("%d,",d[i].data[j]);//so they do scan in the values
+         token = strtok(NULL,",");
+         j++;
       }
       i++;
-   }
+   } 
 
+   for(int c= 0; c < i;c++){
+      printf("\nFunction:--%s--Filename:--%d--Data:",d[c].func,d[c].filename);
+      int *ptr = d[c].data;
+      int size = 0;
+      while(*ptr !=0){
+         *ptr++;
+         size++;
+      }
+      for(int k = 0; k < 2; k++){//2 instead of size idk le la i fked up
+         printf("%d,",d[c].data[k]);
+      }
+   }
    
    fclose(fp);
 
@@ -65,7 +82,7 @@ int Table[TB],pos=0,r,i,j,ch,B=0;
 char fn[30];
 int main()
 {
-       
+    readFile(); 
     printf("\n Contiguous File Allocation \n\n");
     do{
     printf("\n\n1.Add\n2.Delete\n3.Read\n4.Exit");
@@ -99,7 +116,6 @@ void add()
 {
    //printf("\nEnter File Name : ");
    //scanf("%s",&(F[pos].n));
-   
    int a =  100;
    //printf("\nEnter File Length : ");
    //scanf("%d",&(F[pos].len));
