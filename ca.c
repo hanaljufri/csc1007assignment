@@ -69,11 +69,11 @@ void main()
    printf("\n Contiguous File Allocation \n\n");
    readFile();
    for(int c= 0; c < i;c++){
-      char *function = d[c].func;
+      char *function = d[c].func;//d[1].func
       switch(*function){
          case 'a':
             printf("\naddpart1\n");
-            add();
+            add(c);
             break;
          case 'r':
             printf("\nreadpart1\n");
@@ -91,7 +91,9 @@ void main()
 
 }
 
-void add(){
+void add(int index){
+   printf("%d",d[index].filename);
+   //d[1].filename
    printf("--went into add function--");
 }
 void read(){
