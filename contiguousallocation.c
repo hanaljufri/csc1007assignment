@@ -114,12 +114,11 @@ int main()
 }
 void add()
 {
-   //printf("\nEnter File Name : ");
-   //scanf("%s",&(F[pos].n));
-   int a =  100;
-   //printf("\nEnter File Length : ");
-   //scanf("%d",&(F[pos].len));
-   F[pos].len = 6;
+   printf("\nEnter File Name : ");
+   scanf("%s",&(F[pos].n));
+   
+   printf("\nEnter File Length : ");
+   scanf("%d",&(F[pos].len));
    if(BFull())
    {
         pos--;
@@ -129,7 +128,7 @@ void add()
    while(1)
    {
         i=0;
-        r=(a);
+        r = atoi(F[pos].n);
         if(r+F[pos].len-1>TB)
            continue;
         if(Table[r]==0)
@@ -150,7 +149,7 @@ void add()
     printf("\nFileName\tStart\tLength\n");
     for(i=1;i<=pos;i++)
     {
-        printf("\n100\t\t%d\t%d",F[i].st,F[i].len);
+        printf("\n%s\t\t%d\t%d",F[i].n,F[i].st,F[i].len);
         printf("\n");
     }
 
