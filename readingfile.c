@@ -68,7 +68,7 @@ int readFile(){
    } 
 
    for(int c= 0; c < i;c++){
-      printf("\nFunction: %s Filename: %d Data:",d[c].func,d[c].filename);
+      printf("\nFunction:--%s--Filename:--%d--Data:",d[c].func,d[c].filename);
       int *ptr = d[c].data;
       int size = 0;
       while(*ptr !=0){
