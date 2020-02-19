@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define FILESIZE 130
+#define FILESIZE 100
 FILE *fp;
 typedef struct{
       char func[6];//to read add, read, delete based on first letter
@@ -10,12 +10,11 @@ typedef struct{
       int data[FILESIZE];
 }data;
 data d[10];//basically able to read 10 lines so got 10 different set of data
-int i = 0,pos = 0, B = 0;
+int i = 0;
 int readFile();
 void add();
 void read();
 void delete();
-int bFull();
 
 int readFile(){
 
@@ -46,7 +45,6 @@ int readFile(){
          token = strtok(NULL,",");
          j++;
       }
-      
       i++;
    } 
    for(int c= 0; c < i;c++){
@@ -75,12 +73,11 @@ void main()
       switch(*function){
          case 'a':
             printf("\naddpart1\n");
-            //printf("%d",(int)sizeof(d[c].data));
             add(c);
             break;
          case 'r':
             printf("\nreadpart1\n");
-            read(c);
+            read();
             break;
          case 'd':
             printf("\ndeletepart1\n");
@@ -97,6 +94,7 @@ void add(int index){
    printf("%d",d[index].filename);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
    
 =======
 =======
@@ -110,28 +108,14 @@ void add(int index){
 >>>>>>> 678557c9649508d494a65a3e34d40bc1d70de787
 =======
 >>>>>>> 678557c9649508d494a65a3e34d40bc1d70de787
+=======
+>>>>>>> parent of 678557c... ---
    //d[1].filename
    printf("--went into add function--");
-
 }
-void read(int index){
-   printf("Filename: %d\n",d[index].filename);
-   printf("Data inside: ");
-   for(int k = 0; k < 2; k++){//weird but i lost le
-         printf("%d,",d[index].data[k]);
-   }
+void read(){
    printf("--went into read function--");
 }
 void delete(){
    printf("--went into delete function--");
-}
-int bFull(){
-   for(i = 1,B = 0;i<=pos;i++){
-      B = B + sizeof(d[i].data);
-   }
-   if(B>FILESIZE){
-      return 1;
-   }else{
-      return 0;
-   }
 }
