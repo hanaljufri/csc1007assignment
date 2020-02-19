@@ -128,30 +128,30 @@ void add()
    while(1)
    {
         i=0;
-        r = atoi(F[pos].n);
-        if(r+F[pos].len-1>TB)
+        r = atoi(F[pos].n);//add 100 so r = 100
+        if(r+F[pos].len-1>TB)//100 + 6 less than 10000
            continue;
-        if(Table[r]==0)
+        if(Table[r]==0)//check at table 100
         {
-                for(i=r+1;i<r+F[pos].len;i++)
-                    if(Table[i]==1)
-                        break;
+                for(i=r+1;i<r+F[pos].len;i++)//for loop to check 101 to 106
+                    if(Table[i]==1)//if table[101], table[102] .... table[106] got value
+                        break; //end it
         }
-        if(i==r+F[pos].len)
-            break;
+        if(i==r+F[pos].len)//if the previous for loop run till 106
+            break;//end it
 
 
     }
-    F[pos].st=r;
+    F[pos].st=r; //start at r = 100
     for(i=r;i<r+F[pos].len;i++)
-        Table[i]=1;
+        Table[i]=1; // table[101] ... table[106] now = 1
     printf("\n\tFile Allocation Table\n");
     printf("\nFileName\tStart\tLength\n");
     for(i=1;i<=pos;i++)
     {
         printf("\n%s\t\t%d\t%d",F[i].n,F[i].st,F[i].len);
         printf("\n");
-    }
+    }//basic printing
 
 }
 void delete()
@@ -198,9 +198,9 @@ void read()
 }
 int BFull()
 {
-    for(i=1,B=0;i<=pos;i++)
+    for(i=1,B=0;i<=pos;i++)//basically adds up the lengths tgt
         B=B+F[i].len;
-    if(B>TB)
+    if(B>TB)//check if the lengths all addup got exceed the amount of memorysize 100
         return 1;
     else
         return 0;

@@ -75,7 +75,7 @@ int readFile(){
          *ptr++;
          size++;
       }
-      for(int k = 0; k < 2; k++){//2 instead of size idk le la i fked up
+      for(int k = 0; k < size; k++){//2 instead of size idk le la i fked up
          printf("%d,",d[c].data[k]);
       }
    }
