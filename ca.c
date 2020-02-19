@@ -96,7 +96,9 @@ void main()
 void add(int index){
    printf("%d",d[index].filename);
 <<<<<<< HEAD
+<<<<<<< HEAD
    
+=======
 =======
 >>>>>>> 678557c9649508d494a65a3e34d40bc1d70de787
    /*if(bFull()){
