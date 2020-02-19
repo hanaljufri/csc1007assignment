@@ -5,7 +5,7 @@ void allocate();
 void deallocate();
 void display();
 void freespace();
-int BFull();
+int IfFull();
 struct Sequence
 {
     char n[30];
@@ -56,7 +56,7 @@ void allocate()
    scanf("%s",&(F[pos].n));
    printf("\nEnter File Length : ");
    scanf("%d",&(F[pos].len));
-   if(BFull())
+   if(IfFull())
    {
         pos--;
        printf("\n\nNo Enough Free Space Available \n");
@@ -133,18 +133,21 @@ void display()
         }
     }
 }
-int BFull()
+int IfFull()
 {
-    for(i=1,B=0;i<=pos;i++)
-        B=B+F[i].len;
-    if(B>TB)
-        return 1;
-    else
+    for(i=0;i<pos;i++)
+        if (Table[i]>0)
+        {
+            j++;
+        }
+    if(i>j)
         return 0;
+    else
+        return 1;
 }
 void freespace()
 {
-    if (BFull())
+    if (IfFull())
     {
         printf("There is not space left");
     }
