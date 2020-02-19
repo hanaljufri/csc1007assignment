@@ -98,11 +98,15 @@ void add(int index){
 <<<<<<< HEAD
    
 =======
+>>>>>>> 678557c9649508d494a65a3e34d40bc1d70de787
    /*if(bFull()){
       pos--;
       printf("\n\nNot Enough Free Space Available \n");
       return;
    }*/
+<<<<<<< HEAD
+>>>>>>> 678557c9649508d494a65a3e34d40bc1d70de787
+=======
 >>>>>>> 678557c9649508d494a65a3e34d40bc1d70de787
    //d[1].filename
    printf("--went into add function--");
