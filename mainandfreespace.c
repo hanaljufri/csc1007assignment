@@ -101,7 +101,7 @@ void freespace()
     if (IfFull())
     {
         printf("There is no space left");
-    }
+    }//yoyo
     else
     {
         for(i=0;i<MAX;i++)
