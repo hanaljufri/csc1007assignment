@@ -100,7 +100,7 @@ void freespace()
     int i,j=0;
     if (IfFull())
     {
-        printf("There is not space left");
+        printf("There is no space left");
     }
     else
     {
